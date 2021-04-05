@@ -12,7 +12,8 @@ using namespace std;
 using Biterm = pair<unsigned int, unsigned int>;
 
 class SyncParallelBtm : public Btm {
-    unsigned int workerThreadCount = 1;
+public:
+    unsigned int workerThreadCount = 3;
 protected:
     void doGibbsIterations(const vector<Biterm> &allBiterms, unsigned int vocabSize, unsigned int iterations,
                            vector<unsigned int> &bitermToTopic, vector<unsigned int> &wordAndTopicToCount,

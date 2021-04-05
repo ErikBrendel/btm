@@ -8,7 +8,7 @@ using Biterm = pair<unsigned int, unsigned int>;
 
 class Btm {
 public:
-    unsigned int topicCount = 3;
+    unsigned int topicCount = 10;
     double alpha = 1.0; // dirichlet prior probability for each topic
     double beta = 0.01; // dirichlet prior probability for topic-word-probabilities
     unsigned int maxTopWords = 10;

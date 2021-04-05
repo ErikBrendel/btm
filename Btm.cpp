@@ -115,6 +115,7 @@ void Btm::doGibbsIterations(const vector<Biterm> &allBiterms, unsigned int vocab
 #if DELAY_UPDATES
     vector<tuple<unsigned int, unsigned int, unsigned int>> updates; // <biterm, oldTopic, newTopic>
 #endif
+    auto startTime = timeNow();
     rep(it, iterations) {
         unsigned int changes = 0;
 #if DELAY_UPDATES
@@ -172,7 +173,8 @@ void Btm::doGibbsIterations(const vector<Biterm> &allBiterms, unsigned int vocab
 #endif
 
         //topic,coherence,iteration,threadCount
-        printTopicCoherences("," + to_string(it) + ",0", vocabSize, wordAndTopicToCount);
+        auto elapsedTime = timeSince(startTime);
+        printTopicCoherences("," + to_string(it) + "," + to_string(elapsedTime) + ",0", vocabSize, wordAndTopicToCount);
         // cout << it << "," << (double)(changes * 1000 / allBiterms.size()) * 0.1 << ",yes" << endl;
     }
 }

@@ -1,16 +1,16 @@
 #include <iostream>
 #include <vector>
 #include <sstream>
+#include <thread>
 #include "Btm.h"
 #include "ParallelBtm.h"
 #include "SyncParallelBtm.h"
 #include "CountVectorizer.h"
 #include "SortedLimitedList.h"
 #include "util.h"
+#include "argparse.h"
 
 using namespace std;
-
-const int MAX_VOCAB_SIZE = 1500;
 
 /**
  * get the list of indices that are not zero in this vector
@@ -73,22 +73,31 @@ vector<vector<string>> readInputDocuments() {
     return documents;
 }
 
-int main() {
+int main(int argc, const char* argv[]) {
+    auto threadCount = thread::hardware_concurrency();
+    if (threadCount <= 0) threadCount = 4;
+    SyncParallelBtm model;
+    model.workerThreadCount = getArg("workerThreadCount", threadCount - 1);
+    model.topicCount = getArg("topicCount", model.topicCount);
+    model.maxTopWords = getArg("maxTopWords", model.maxTopWords);
+    auto maxTopDocuments = getArg("maxTopDocuments", 5);
+    auto maxVocabSize = getArg("maxVocabSize", 1000);
+    auto iterations = getArg("iterations", 200);
+
+
     vector<vector<string>> documents = readInputDocuments();
 
     CountVectorizer vec;
 
     // for each document: for each vocab: how often does it appear
-    vector<vector<unsigned int>> X = vec.fitTransform(documents,1000);
+    vector<vector<unsigned int>> X = vec.fitTransform(documents, maxVocabSize);
 
     // for each document: list of occurring biterms, which are indices according to the countVectorizer
     vector<vector<Biterm>> documentsBiterms = vec2Biterms(X);
 
-    Btm model;
-    model.topicCount = 10;
-    model.maxTopWords = 20;
+
     model.X = X;
-    auto[topWordsPerTopic, documentToTopicProbabilities] = model.fitTransform(documentsBiterms, vec.vocabSize, 200); // called P_wz and P_zd
+    auto[topWordsPerTopic, documentToTopicProbabilities] = model.fitTransform(documentsBiterms, vec.vocabSize, iterations); // called P_wz and P_zd
 
     vector<double> coherences;
     cout << endl << "Top documents per topic:" << endl;
@@ -120,8 +129,7 @@ int main() {
         }
         cout << "->Coherence: " << coherence << endl;
         coherences.push_back(coherence);
-        /*
-        SortedLimitedList<unsigned int, double, false> docSorter(5);
+        SortedLimitedList<unsigned int, double, false> docSorter(maxTopDocuments);
         rep(d, documents.size()) {
             docSorter.add(d, documentToTopicProbabilities[d * model.topicCount + t]);
         }
@@ -131,12 +139,12 @@ int main() {
                 cout << " " << word;
             }
             cout << endl;
-        }*/
+        }
         cout << endl << endl;
     }
     sort(all(coherences));
     rep(t, model.topicCount) {
-        cout << "1," << t << "," << coherences[t] << ",no" << endl;
+        cout << t << "," << coherences[t] << endl;
     }
 
     return 0;

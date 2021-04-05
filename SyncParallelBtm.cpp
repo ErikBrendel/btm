@@ -16,6 +16,7 @@ SyncParallelBtm::aggregator_thread_fn(const vector<Biterm> &allBiterms, unsigned
                                       vector<unsigned int> &wordAndTopicToCount, vector<unsigned int> &topicToCount,
                                       ThreadsafeQueue<tuple<unsigned int, unsigned int, unsigned int>> &bitermTopicUpdates,
                                       ThreadSync1toN &threadSync) const {
+    auto startTime = timeNow();
     rep(it, iterations) {
         threadSync.mainThreadWait();
         // cout << "Iteration " << it << " had " << bitermTopicUpdates.size() << " updates" << endl;
@@ -35,7 +36,8 @@ SyncParallelBtm::aggregator_thread_fn(const vector<Biterm> &allBiterms, unsigned
         }
 
         //topic,coherence,iteration,threadCount
-        printTopicCoherences("," + to_string(it) + "," + to_string(workerThreadCount), vocabSize, wordAndTopicToCount);
+        auto elapsedTime = timeSince(startTime);
+        printTopicCoherences("," + to_string(it) + "," + to_string(elapsedTime) + "," + to_string(workerThreadCount), vocabSize, wordAndTopicToCount);
 
         threadSync.mainThreadDone();
     }
