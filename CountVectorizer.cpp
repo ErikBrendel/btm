@@ -32,7 +32,6 @@ CountVectorizer::fitTransform(const vector<vector<string>> &documentWords, unsig
     for (const auto &entry: word_freq) {
         word_freq_sorted.emplace_back(entry);
     }
-    // todo correct order?
     sort(all(word_freq_sorted), [](const pair<string, unsigned int> &a, const pair<string, unsigned int> &b) {
         return b.second < a.second;
     });

@@ -99,7 +99,6 @@ int main(int argc, const char* argv[]) {
     model.X = X;
     auto[topWordsPerTopic, documentToTopicProbabilities] = model.fitTransform(documentsBiterms, vec.vocabSize, iterations); // called P_wz and P_zd
 
-    vector<double> coherences;
     cout << endl << "Top documents per topic:" << endl;
     rep(t, model.topicCount) {
         cout << "Topic " << t << ":";
@@ -128,7 +127,6 @@ int main(int argc, const char* argv[]) {
             }
         }
         cout << "->Coherence: " << coherence << endl;
-        coherences.push_back(coherence);
         SortedLimitedList<unsigned int, double, false> docSorter(maxTopDocuments);
         rep(d, documents.size()) {
             docSorter.add(d, documentToTopicProbabilities[d * model.topicCount + t]);
@@ -140,11 +138,17 @@ int main(int argc, const char* argv[]) {
             }
             cout << endl;
         }
-        cout << endl << endl;
+        cout << endl;
     }
-    sort(all(coherences));
-    rep(t, model.topicCount) {
-        cout << t << "," << coherences[t] << endl;
+
+    // return the doc-top matrix
+    rep(d, documents.size()) {
+        cout << "#doctop ";
+        rep(t, model.topicCount) {
+            if (t != 0) cout << ",";
+            cout << documentToTopicProbabilities[d * model.topicCount + t];
+        }
+        cout << endl;
     }
 
     return 0;

@@ -37,7 +37,11 @@ SyncParallelBtm::aggregator_thread_fn(const vector<Biterm> &allBiterms, unsigned
 
         //topic,coherence,iteration,threadCount
         auto elapsedTime = timeSince(startTime);
-        printTopicCoherences("," + to_string(it) + "," + to_string(elapsedTime) + "," + to_string(workerThreadCount), vocabSize, wordAndTopicToCount);
+        if (elapsedTime > 500) {
+            cout << "#progress " << it << " of " << iterations << endl;
+            startTime = timeNow();
+        }
+        // printTopicCoherences("," + to_string(it) + "," + to_string(elapsedTime) + "," + to_string(workerThreadCount), vocabSize, wordAndTopicToCount);
 
         threadSync.mainThreadDone();
     }
