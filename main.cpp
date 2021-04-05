@@ -1,7 +1,9 @@
 #include <iostream>
 #include <vector>
 #include <sstream>
-#include "btm.h"
+#include "Btm.h"
+#include "ParallelBtm.h"
+#include "SyncParallelBtm.h"
 #include "CountVectorizer.h"
 #include "SortedLimitedList.h"
 #include "util.h"
@@ -76,14 +78,17 @@ int main() {
 
     CountVectorizer vec;
 
-    vector<vector<unsigned int>> X = vec.fitTransform(documents,1000); // for each document: for each vocab: how often does it appear
-    vector<vector<Biterm>> documentsBiterms = vec2Biterms(
-            X);  // for each document: list of occurring biterms, which are indices according to the countVectorizer
+    // for each document: for each vocab: how often does it appear
+    vector<vector<unsigned int>> X = vec.fitTransform(documents,1000);
 
-    btm model;
+    // for each document: list of occurring biterms, which are indices according to the countVectorizer
+    vector<vector<Biterm>> documentsBiterms = vec2Biterms(X);
+
+    Btm model;
     model.topicCount = 10;
     model.maxTopWords = 20;
-    auto[topWordsPerTopic, documentToTopicProbabilities] = model.fitTransform(documentsBiterms, vec.vocabSize, 5120); // called P_wz and P_zd
+    model.X = X;
+    auto[topWordsPerTopic, documentToTopicProbabilities] = model.fitTransform(documentsBiterms, vec.vocabSize, 200); // called P_wz and P_zd
 
     vector<double> coherences;
     cout << endl << "Top documents per topic:" << endl;
@@ -131,7 +136,7 @@ int main() {
     }
     sort(all(coherences));
     rep(t, model.topicCount) {
-        cout << "10," << t << "," << coherences[t] << endl;
+        cout << "1," << t << "," << coherences[t] << ",no" << endl;
     }
 
     return 0;

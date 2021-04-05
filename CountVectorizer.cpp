@@ -39,7 +39,7 @@ CountVectorizer::fitTransform(const vector<vector<string>> &documentWords, unsig
 
     vocabSize = min(maxVocabSize, (unsigned int) word_freq_sorted.size());
     std::cout << "Total amount of words: " << word_freq_sorted.size() << ", vocab size: " << vocabSize << endl;
-    index_to_word.reserve(vocabSize);
+    index_to_word.resize(vocabSize);
     word_to_index.reserve(vocabSize);
     rep(i, vocabSize) {
         string word = word_freq_sorted[i].first;

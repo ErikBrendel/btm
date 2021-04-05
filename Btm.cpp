@@ -1,6 +1,6 @@
 #include <memory>
 #include <iostream>
-#include "btm.h"
+#include "Btm.h"
 
 #include "SortedLimitedList.h"
 
@@ -19,19 +19,13 @@ unsigned int randRange(unsigned int upperBound) {
 
 
 pair<vector<vector<unsigned int>>, vector<double>>
-btm::fitTransform(const vector<vector<Biterm>> &documentsBiterms, unsigned int vocabSize, unsigned int iterations) {
+Btm::fitTransform(const vector<vector<Biterm>> &documentsBiterms, unsigned int vocabSize, unsigned int iterations) {
     vector<Biterm> allBiterms;
     for (const auto &biterms: documentsBiterms) {
         allBiterms.insert(allBiterms.end(), all(biterms));
     }
     auto [topicToCount, wordAndTopicToCount] // n_z, n_wz
         = gibbsSampling(allBiterms, vocabSize, iterations);
-
-    // TODO convert n_wz and n_z to phi_wz and theta_z
-    //  use those two to transform the list of input documents to the P_dz matrix (docTop)
-    //  https://numpy.org/doc/stable/user/basics.broadcasting.html
-    //  https://github.com/jcapde/Biterm/blob/master/Biterm_sampler.py#L97
-    //  https://github.com/markoarnauto/biterm/blob/master/biterm/btm.py#L61
 
     vector<double> phi_wz(vocabSize * topicCount);
     vector<double> theta_z(topicCount);
@@ -88,7 +82,7 @@ btm::fitTransform(const vector<vector<Biterm>> &documentsBiterms, unsigned int v
     return pair(topWordsPerTopic, documentToTopicProbabilities);
 }
 
-pair<vector<unsigned int>, vector<unsigned int>> btm::gibbsSampling(const vector<Biterm> &allBiterms, unsigned int vocabSize, unsigned int iterations) const {
+pair<vector<unsigned int>, vector<unsigned int>> Btm::gibbsSampling(const vector<Biterm> &allBiterms, unsigned int vocabSize, unsigned int iterations) const {
     auto bitermCount = allBiterms.size();
 
     vector<unsigned int> bitermToTopic(bitermCount);  // Z
@@ -106,18 +100,38 @@ pair<vector<unsigned int>, vector<unsigned int>> btm::gibbsSampling(const vector
     }
 
     // perform gibbs iterations!
+    doGibbsIterations(allBiterms, vocabSize, iterations, bitermToTopic, wordAndTopicToCount, topicToCount);
+
+    return pair(topicToCount, wordAndTopicToCount);
+}
+
+#define DELAY_UPDATES true
+
+void Btm::doGibbsIterations(const vector<Biterm> &allBiterms, unsigned int vocabSize, unsigned int iterations,
+                            vector<unsigned int> &bitermToTopic,
+                            vector<unsigned int> &wordAndTopicToCount,
+                            vector<unsigned int> &topicToCount) const {
     double betaTimesVocabSize = beta * (double)vocabSize;
-    rep(_, iterations) {
-        std::cout << "Iteration " << _ << std::endl;
+#if DELAY_UPDATES
+    vector<tuple<unsigned int, unsigned int, unsigned int>> updates; // <biterm, oldTopic, newTopic>
+#endif
+    rep(it, iterations) {
+        unsigned int changes = 0;
+#if DELAY_UPDATES
+        updates.clear();
+#endif
         rep(i, allBiterms.size()) {
             const auto &biterm = allBiterms[i];
             // remove this biterm from its old topic
+#if !DELAY_UPDATES
             wordAndTopicToCount[biterm.first * topicCount + bitermToTopic[i]]--;
             wordAndTopicToCount[biterm.second * topicCount + bitermToTopic[i]]--;
             topicToCount[bitermToTopic[i]]--;
+#endif
 
             // See equation 4 in the short text BTM paper
             vector<double> topicProbabilities(topicCount); // P_z, but not normalized, as the c++ random lib does that
+            // TODO annealing?
             rep(t, topicCount) {
                 topicProbabilities[t] = (topicToCount[t] + alpha)
                                         * (wordAndTopicToCount[biterm.first * topicCount + t] + beta)
@@ -125,15 +139,83 @@ pair<vector<unsigned int>, vector<unsigned int>> btm::gibbsSampling(const vector
                                         / square(2 * topicToCount[t] + betaTimesVocabSize);
             }
             // convert list of topic probabilities to discrete random distribution object
-            std::discrete_distribution<> discrete_dist(all(topicProbabilities));
-            bitermToTopic[i] = discrete_dist(my_btm_randomEngine); // assign a new topic
+            discrete_distribution<> discrete_dist(all(topicProbabilities));
+            int newTopic = discrete_dist(my_btm_randomEngine);
+            if (bitermToTopic[i] != newTopic) changes++;
+
+
+#if DELAY_UPDATES
+            if (bitermToTopic[i] != newTopic) updates.emplace_back(i, bitermToTopic[i], newTopic);
+#else
+            bitermToTopic[i] = newTopic; // assign a new topic
 
             // register this biterm to its new topic
             wordAndTopicToCount[biterm.first * topicCount + bitermToTopic[i]]++;
             wordAndTopicToCount[biterm.second * topicCount + bitermToTopic[i]]++;
             topicToCount[bitermToTopic[i]]++;
+#endif
         }
+#if DELAY_UPDATES
+        for (const auto& [i, oldTopic, newTopic] : updates) {
+            const auto& biterm = allBiterms[i];
+            wordAndTopicToCount[biterm.first * topicCount + oldTopic]--;
+            wordAndTopicToCount[biterm.second * topicCount + oldTopic]--;
+            topicToCount[oldTopic]--;
+
+            bitermToTopic[i] = newTopic;
+
+            // register this biterm to its new topic
+            wordAndTopicToCount[biterm.first * topicCount + newTopic]++;
+            wordAndTopicToCount[biterm.second * topicCount + newTopic]++;
+            topicToCount[newTopic]++;
+        }
+#endif
+
+        //topic,coherence,iteration,threadCount
+        printTopicCoherences("," + to_string(it) + ",0", vocabSize, wordAndTopicToCount);
+        // cout << it << "," << (double)(changes * 1000 / allBiterms.size()) * 0.1 << ",yes" << endl;
+    }
+}
+
+void
+Btm::printTopicCoherences(const string &extraCsv, unsigned int vocabSize,
+                          const vector<unsigned int> &wordAndTopicToCount) const {
+
+    vector<vector<unsigned int>> topWordsPerTopic;
+    topWordsPerTopic.reserve(topicCount);
+    rep(t, topicCount) {
+        SortedLimitedList<unsigned int, unsigned int, false> sortList(maxTopWords);
+        rep(w, vocabSize) {
+            sortList.add(w, wordAndTopicToCount[w * topicCount + t]);
+        }
+        topWordsPerTopic.push_back(sortList.getElements());
     }
 
-    return pair(topicToCount, wordAndTopicToCount);
+    vector<double> coherences;
+    rep(t, topicCount) {
+        double coherence = 0; // C_z
+        for (unsigned int m = 1; m < topWordsPerTopic.size(); m++) {
+            for (unsigned int l = 0; l < m; l++) {
+                // topWordsPerTopic is V_z
+                double D_vmvl = 1; // add 1 to smooth out and not take log of zero
+                double D_l = 0;
+                for (const auto &doc: X) {
+                    if (doc[topWordsPerTopic[t][l]] > 0) {
+                        D_l++;
+                        if (doc[topWordsPerTopic[t][m]] > 0) {
+                            D_vmvl++;
+                        }
+                    }
+                }
+                if (D_l > 0) {
+                    coherence += log(D_vmvl / D_l);
+                }
+            }
+        }
+        coherences.push_back(coherence);
+    }
+    sort(all(coherences));
+    rep(t, topicCount) {
+        cout << t << "," << coherences[t] << extraCsv << endl;
+    }
 }
