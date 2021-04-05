@@ -80,6 +80,8 @@ int main(int argc, const char* argv[]) {
     model.workerThreadCount = getArg("workerThreadCount", threadCount - 1);
     model.topicCount = getArg("topicCount", model.topicCount);
     model.maxTopWords = getArg("maxTopWords", model.maxTopWords);
+    model.alpha = getArg("alpha", model.alpha);
+    model.beta = getArg("beta", model.beta);
     auto maxTopDocuments = getArg("maxTopDocuments", 5);
     auto maxVocabSize = getArg("maxVocabSize", 1000);
     auto iterations = getArg("iterations", 200);
