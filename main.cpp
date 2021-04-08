@@ -77,14 +77,25 @@ int main(int argc, const char* argv[]) {
     auto threadCount = thread::hardware_concurrency();
     if (threadCount <= 0) threadCount = 4;
     SyncParallelBtm model;
-    model.workerThreadCount = getArg("workerThreadCount", threadCount - 1);
+
+    auto iterations = getArg("iterations", 200);
+    auto maxVocabSize = getArg("maxVocabSize", 1000);
     model.topicCount = getArg("topicCount", model.topicCount);
-    model.maxTopWords = getArg("maxTopWords", model.maxTopWords);
     model.alpha = getArg("alpha", model.alpha);
     model.beta = getArg("beta", model.beta);
+    model.workerThreadCount = getArg("workerThreadCount", threadCount - 1);
+    model.maxTopWords = getArg("maxTopWords", model.maxTopWords);
     auto maxTopDocuments = getArg("maxTopDocuments", 5);
-    auto maxVocabSize = getArg("maxVocabSize", 1000);
-    auto iterations = getArg("iterations", 200);
+    cout << "Parallel Biterm Topic Modeling:" << endl
+         << "  Iterations: " << iterations << endl
+         << "  Maximum vocabulary size: " << maxVocabSize << endl
+         << "  Number of Topics: " << model.topicCount << endl
+         << "  Alpha: " << model.alpha << endl
+         << "  Beta: " << model.beta << endl
+         << "  Worker threads: " << model.workerThreadCount << endl
+         << "  Number of top words to show: " << model.maxTopWords << endl
+         << "  Number of top documents to show: " << maxTopDocuments << endl
+         ;
 
 
     vector<vector<string>> documents = readInputDocuments();
