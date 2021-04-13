@@ -4,7 +4,7 @@ from tqdm import tqdm
 CLI_PATH = "cmake-build-release/btm"
 
 content = None
-with open('example_jhotdraw.txt') as f:
+with open('data/example_jhotdraw.txt') as f:
     content = "".join(f.readlines())
 
 total_iterations = 200
