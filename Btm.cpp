@@ -24,6 +24,7 @@ Btm::fitTransform(const vector<vector<Biterm>> &documentsBiterms, unsigned int v
     for (const auto &biterms: documentsBiterms) {
         allBiterms.insert(allBiterms.end(), all(biterms));
     }
+    cout << "Total amount of biterms: " << allBiterms.size() << endl;
     auto [topicToCount, wordAndTopicToCount] // n_z, n_wz
         = gibbsSampling(allBiterms, vocabSize, iterations);
 

@@ -99,6 +99,7 @@ int main(int argc, const char* argv[]) {
 
 
     vector<vector<string>> documents = readInputDocuments();
+    cout << "  Number of documents: " << documents.size() << endl;
 
     CountVectorizer vec;
 
