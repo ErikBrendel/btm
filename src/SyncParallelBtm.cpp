@@ -115,14 +115,16 @@ SyncParallelBtm::doGibbsIterations(const vector<Biterm> &allBiterms, unsigned in
         auto bitermCount =
                 th == workerThreadCount - 1 ? (allBiterms.size() - (workerThreadCount - 1) * bitermsPerThread)
                                             : bitermsPerThread;
-        allBitermsSplit[th].resize(bitermCount);
         unsigned int bitermOffset = th * bitermsPerThread;
+
+        allBitermsSplit[th].resize(bitermCount);
         copy(allBiterms.begin() + bitermOffset,
-             allBiterms.begin() + th * bitermCount + bitermCount,
+             allBiterms.begin() + bitermOffset + bitermCount,
              allBitermsSplit[th].begin());
+
         bitermToTopicSplit[th].resize(bitermCount);
         copy(bitermToTopic.begin() + bitermOffset,
-             bitermToTopic.begin() + th * bitermCount + bitermCount,
+             bitermToTopic.begin() + bitermOffset + bitermCount,
              bitermToTopicSplit[th].begin());
         workerThreads.emplace_back(&SyncParallelBtm::worker_thread_fn, this,
                                    cref(allBitermsSplit[th]), vocabSize, iterations,

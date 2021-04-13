@@ -1,0 +1,7 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="btm spacecontrol" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="--iterations 10" REDIRECT_INPUT="true" REDIRECT_INPUT_PATH="$PROJECT_DIR$/data/example_spacecontrol.txt" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="btm" TARGET_NAME="btm" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="btm" RUN_TARGET_NAME="btm">
+    <method v="2">
+      <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+    </method>
+  </configuration>
+</component>

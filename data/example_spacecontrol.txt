@@ -1,0 +1,436 @@
+asteroid id
+asteroid un harm ful sec 0
+asteroid asteroid count 3
+asteroid buffer image raw image buffer image asteroid count
+asteroid buffer image blur image buffer image asteroid count
+asteroid buffer image transparent image buffer image asteroid count
+asteroid damage un harm ful sec 0 0 id 1 11 2 4 0 20
+asteroid un harm ful sec un harm ful sec sec
+asteroid override render graphics2 d g height d x location x d y location y height 0 render rotate image 0 id rotation height 1 render rotate image 1 id rotation height 1 render rotate image 1 id rotation factor math ab height system err println factor factor buffer image render1 rotate image 0 id rotation factor 0 buffer image render2 rotate image 1 id rotation factor 1 render gfx loader combine render1 render2 factor g composite alpha composite instance alpha composite src 1 factor g draw image render1 d x d y g composite alpha composite instance alpha composite src factor g draw image render2 d x d y g composite alpha composite instance alpha composite src render render1 g draw image render d x d y g color color red g draw rect b x b y b width b height b width render width b height render height
+asteroid update time since last frame un harm ful sec time since last frame un harm ful sec 0 un harm ful sec 0 rotation rotate speed time since last frame location location plus move vector multiply time since last frame b x location x b y location y 0
+asteroid buffer image rotate image version asteroid id degree version 0 gfx loader rotate image degree raw image asteroid id degree gfx loader rotate image degree transparent image asteroid id degree
+asteroid create random asteroid asteroid create random shape asteroid id random next asteroid count 1 generate small one asteroid id asteroid count asteroid id 2 asteroid asteroid asteroid id init
+asteroid asteroid id id id id 0 b rect 0 0 100 100 id 1 b rect 0 0 300 300 b rect 0 0 50 50
+background buffer image background stars0 stars1
+background buffer image background stars0 stars1
+background buffer image background stars0 stars1
+background time since start
+background update time since last frame time since start time since last frame
+background render graphics2 d g g draw image background 0 0 option animate background s0x po time since start 10 3200 s0x po 1600 g draw image stars0 s0x po 3200 0 g draw image stars0 s0x po 0 s1x po time since start 15 3200 s1x po 1600 g draw image stars1 s1x po 3200 0 g draw image stars1 s1x po 0
+background background background gfx loader load image background stars0 gfx loader load image stars0 stars1 gfx loader load image stars1 time since start 0
+fly object rotation 0
+fly object point location
+fly object point move vector
+fly object rotate speed
+fly object bound b
+fly object buffer image render
+fly object can remove
+fly object bound b b
+fly object buffer image last image render
+fly object remove can remove
+fly object point move vector move vector
+fly object move vector point move vector move vector move vector
+fly object update delta time
+fly object init random r random location point 1700 200 r next 1100 move vector point 150 r next 100 40 r next 80 rotate speed 100 r next 200 point spawn circle center point 1100 450 center spawn circle point target point point 100 r next 100 150 r next 600 point spawn vector point 0 800 rotate r next 180 point spawn point spawn circle center plus spawn vector point raw move vector target point minus spawn point move vector raw move vector trim option score 100 r next 220 location spawn point minus b size multiply 0 5f rotate speed 100 r next 200
+game focus fade ainmation s 0 25f
+game text box view welcome box
+game player player
+game background bg
+game layer layer layer 2
+game hud hud
+game particle manager pm
+game game screen go
+game focus 0
+game animate focus
+game animate focus
+game first run
+game lock
+game init first run construuctor welcome box text box view option welcome box welcome box face face 0 face 1 welcome box show face welcome box filter video transmission filter thread run main add view top welcome box start bg background pm particle manager player player layer 0 layer layer 1 layer hud hud player layer pm add emitter particle emitter smoke 500 500 0 001
+game override render graphics2 d g first run init bg render g layer 0 render g focus player player render g layer 1 render g 1f focus pm render g hud draw g go go draw g
+game create game overcreen go game screen
+game particle manager particle manager pm
+game layer layer layer
+game focus focus
+game override key press key event e go go key press e e key code key event vk control lock lock animate focus animate focus focus 0 5f
+game override key release key event e e key code key event vk control lock
+game override update time since last frame first run init welcome box can remove animate focus animate focus focus time since last frame focus fade ainmation s focus 1f animate focus focus 1f focus time since last frame focus fade ainmation s focus 0f animate focus focus 0f bg update time since last frame layer 0 update time since last frame layer 1 update time since last frame player focus 0 physic physic layer 0 asteroid player focus 1 physic physic layer 1 asteroid player player player update time since last frame hud update time since last frame pm update time since last frame key board key key event vk escape key board release 0 go go update time since last frame 1
+game remove player player
+game screen time visible 0
+game screen show high score
+game screen high score available
+game screen array list player name
+game screen array list integer player score
+game screen highscore
+game screen update time since last frame time visible time since last frame key board key key event vk enter show high score option username length 3 0 1 show high score key board release key event vk enter thread run highscore highscores upload option username option score array list stats highscores stats method may take player name stats 0 player score stats 1 high score available start 1 1
+game screen draw graphics2 d g wheel rotation mouse wheel rotation time visible 2 g color color 50 50 50 time visible 110f g fill rect 200 200 1200 500 g color color 50 50 50 220 g fill rect 200 200 1200 500 g color color light gray font big font helvetica font bold 100 font small font helvetica font bold 40 font smaller font helvetica font bold 30 go game score score option score username text username option username restart press enter restart high personal best g font big gowidth text box view size g go width scorewidth text box view size g score width g font small user name text width text box view size g username text width restart width text box view size g restart width high width text box view size g high width show high score time visible 0 5f 0 3f username text draw box width 1200 show high score draw box width 600 g font big g draw go 200 draw box width gowidth 2 330 g draw score 200 draw box width scorewidth 2 450 g font small g draw username text 200 draw box width user name text width 2 520 g draw restart 200 draw box width restart width 2 620 g font smaller show high score point high start point 200 draw box width 50 200 50 point high size point 1200 draw box width 100 500 100 highscore g font small g color color 150 0 0 g draw high 200 draw box width high width 2 240 g color color light gray g font smaller high score available g color color light gray g fill rect high start x high start y high size x high size y segment hieght 50 max amount high size y segment hieght show amount math min player name size max amount wheel rotation player name size max amount mouse wheel rotation math max 0 player name size max amount wheel rotation mouse wheel rotation wheel rotation 0 mouse wheel rotation 0 wheel rotation mouse wheel rotation point seg size point high size x segment hieght 0 show amount color bg wheel rotation 2 0 bg color 0 0 0 50 bg color 0 0 0 20 point segment start point high start x high start y seg size y g color bg g fill rect segment start x segment start y seg size x seg size y g color color white g draw wheel rotation 1 segment start x 10 segment start y seg size y 13 g draw player name wheel rotation segment start x 60 segment start y seg size y 13 p score player score wheel rotation rectangle2 d p score size text box view size g p score g draw p score segment start x seg size x p score size width 10 segment start y seg size y 13 g color color dark gray g fill rect 1350 250 wheel rotation player name size 8 320 6 80 load load highscores rectangle2 d load size text box view size g load g draw load high start x high size x load size width 2 high start y high size y load size height 2
+game screen key press key event e show high score c e key text box view printable c c c c c option username length 20 option username c e key code key event vk back space option username length 0 option username option username substring 0 option username length 1
+game screen game screen mouse wheel rotation 0
+hud player p
+hud layer layer
+hud buffer image overlay gfx loader load image overlay
+hud buffer image healthbar gfx loader load image healthbar
+hud buffer image healthbar end gfx loader load image healthbar end
+hud last health 1
+hud health bar animation speed 3
+hud draw graphics2 d g g draw image overlay 0 0 g font font monospaced font bold 30 g color color 100 100 100 g fill rect 16 16 500 44 last health 1 last health p health health bar width 500 last health 100f health bar width 0 g draw image healthbar subimage 0 0 health bar width healthbar height 16 16 end image width math min healthbar end width 500 health bar width end image width 0 last health 0 5 g draw image healthbar end subimage 0 0 end image width healthbar end height 16 health bar width 16 g color color white g draw score option score 545 50
+hud update delta time option game option score delta time last health 1 last health p health factor delta time health bar animation speed math ab last health p health 0 1f last health p health last health last health 1 factor p health factor
+hud score option score
+hud hud player p layer layer p p layer layer
+laser x y speedx speedy
+laser x y speedx speedy
+laser x y speedx speedy
+laser x y speedx speedy
+laser dead
+laser update time since last frame x speedx time since last frame y speedy time since last frame x 1600 dead
+laser render graphics2 d g g color color red g stroke basic stroke 4 g draw line x y x speedx 20f y speedy 20f
+laser dead dead
+laser point start point x y
+laser point end point x speedx 20f y speedy 20f
+laser laser x y speedx speedy x x y y point p point speedx speedy trim 1000 speedx p x speedy p y dead
+layer array list fly object asteroid array list
+layer time since last spawn
+layer array list fly object asteroid asteroid
+layer param g param height 1 background 0 focus 1 front render graphics2 d g height g color color white point img size point 1600 900 point offset point 0 0 zoom 0 2f height 0 img size img size multiply 1 zoom height offset point 1600 900 minus img size multiply 0 5f scale height zoom 1 0 g translate offset x offset y g scale scale scale fly object asteroid render g height g scale 1 scale 1 scale g translate offset x offset y
+layer update time since last frame game g time since last spawn time since last frame time since last spawn math max 1 7f option score 200f 0 20f time since last spawn 0 r random next 30 option score 10f r 0 asteroid add pickup create repair kit 1 asteroid add pickup create laser 2 asteroid add pickup create shield asteroid add asteroid create random shape fly object asteroid update time since last frame move b x b width 200 b y b height 200 b y 1100 b x 1900 remove 0 asteroid size asteroid can remove asteroid remove asteroid physic physic asteroid g create collision 0
+layer layer time since last spawn 0
+physic create collision logic physic give list asteroid param asteroid array list fly object physic array list fly object asteroid game g 0 asteroid size j 0 j asteroid size j j fly object a1 asteroid fly object a2 asteroid j a2 b width a1 b width fly object c a1 a1 a2 a2 c a1 asteroid a1 pickup a2 asteroid a2 pickup a1 last image a2 last image a1 b intersect a2 b v x a1 b x a2 b x v y a1 b y a2 b y point intersect gfx loader intersect a1 last image a2 last image v x v y intersect repel a1 a2 intersect g asteroid
+physic repel fly object a1 fly object a2 point intersect game g point m1 a1 b location plus a1 b size multiply 0 5f point m2 a2 b location plus a2 b size multiply 0 5f point center m1 plus m2 multiply 0 5f show touch particle intersect plus a1 location g point v1 m1 minus center point v2 m2 minus center point mv1 a1 move vector plus v1 multiply 2f point mv2 a2 move vector plus v2 multiply 2f mv1 mv1 trim a1 move vector hypot mv2 mv2 trim a1 move vector hypot a1 move vector mv1 a2 move vector mv2 v x 0 v y 0 v x a1 b x a2 b x v y a1 b y a2 b y a1 update 0 01f a2 update 0 01f gfx loader intersect a1 last image a2 last image v x v y
+physic show touch particle point location game g particle p dust location x location y particle emitter e particle emitter p 0 001 g particle manager add emitter e thread run thread sleep 200 exception ex g particle manager remove emitter e start
+physic show asteroid particle point location game g particle p asteroid part location x location y particle emitter e particle emitter p 0 001 g particle manager add emitter e thread run thread sleep 200 exception ex g particle manager remove emitter e start
+pickup pickup count 3
+pickup id
+pickup buffer image 0 raw 1 blur trans id image buffer image 2 pickup count
+pickup override render graphics2 d g height d x location x d y location y height 0 render image 0 id height 1 render image 1 id height 1 render image 1 id factor math ab height system err println factor factor buffer image render1 image 0 id factor 0 buffer image render2 image 1 id factor 1 render gfx loader combine render1 render2 factor g composite alpha composite instance alpha composite src 1 factor g draw image render1 d x d y g composite alpha composite instance alpha composite src factor g draw image render2 d x d y g composite alpha composite instance alpha composite src render render1 g draw image render d x d y g color color red g draw rect b x b y b width b height b width render width b height render height
+pickup override update delta time location location plus move vector multiply delta time b x location x b y location y 0
+pickup effect player p
+pickup pickup create repair kit pickup p pickup 0 override effect player p sound manager play sound sound manager sound pickup repair p damage math max p health 100 25 p init p
+pickup pickup create laser pickup laser pickup 1 override effect player p sound manager play sound sound manager sound pickup laser p laser laser init laser
+pickup pickup create shield pickup s pickup 2 override effect player p sound manager play sound sound manager sound pickup shield p shield s init s
+pickup pickup id id id b rect 0 0 100 100
+player buffer image look
+player buffer image damage overlay
+player buffer image shield overlay
+player buffer image destroy tile
+player point destroy tile center
+player particle emitter emitter1
+player particle emitter emitter2
+player particle emitter emitter3
+player time laser
+player time since last shoot
+player shield enable
+player array list laser laser
+player upspeed 3000
+player gravity 1500
+player x health
+player x health
+player y speedy
+player y speedy
+player time animation
+player current look 0
+player bound b
+player buffer image look
+player add speed speed add speedy speed add
+player speed speed speedy speed
+player speed speedy
+player update time since last frame key board key key event vk space speedy upspeed time since last frame speedy gravity time since last frame speedy 1000 speedy 1000 speedy 1000 speedy 1000 y speedy time since last frame y 0 y 0 speedy 0 y 780 y 780 speedy 0 b y y time animation time since last frame time animation 0 05 time animation 0 current look current look 3 re calc emitter posittions point middle point x y plus point 150 100 point v1 point 30 20 point v2 point 33 2 point v3 point 125 25 v1 v1 rotate speedy 50 v2 v2 rotate speedy 50 v3 v3 rotate speedy 50 point p1 middle plus v1 point p2 middle plus v2 point p3 middle plus v3 emitter1 position p1 x p1 y emitter2 position p2 x p2 y emitter3 position p3 x p3 y time laser 0 time laser time since last frame time since last shoot time since last frame time since last shoot 0 2f time since last shoot 0 2 point v4 point 130 0 v4 v4 rotate speedy 50 point p4 middle plus v4 laser add laser p4 x p4 y v4 x v4 y sound manager play sound sound manager sound laser shoot laser l laser l update time since last frame 0 laser size laser dead laser remove
+player render graphics2 d g laser l laser l render g look buffer image 308 200 buffer image argb graphic g2 look create graphic g2 draw image look current look 0 50 damage state math round 1f health 100f damage overlay length 0 4 emitter1 enable damage state 2 emitter2 enable damage state 3 emitter3 enable damage state 4 0 damage state g2 draw image damage overlay 0 50 shield enable g2 draw image shield overlay 0 50 g2 dispose look gfx loader rotate image degree look speedy 50 g draw image look x y
+player buffer image image look
+player bound bound b
+player health health
+player damage damage game g shield enable damage 0 shield enable health damage health 0 game lose g health 0
+player laser time laser 5f
+player shield shield enable
+player array list laser laser laser
+player game lose game g sound manager play sound sound manager sound explosion option game g remove player g particle manager remove emitter emitter1 g particle manager remove emitter emitter2 g particle manager remove emitter emitter3 bound player b b teile zersplittern destroy tile top offset b width 100 2 0 destroy tile length id fly object tile fly object random r random location point x y destroy tile top offset 50 move vector point r next 100 50 r next 100 50 point center player b location plus player b size multiply 0 5f move vector destroy tile center id plus player b location minus center move vector point move vector x move vector y 2 destroy tile top offset move vector move vector trim 100 rotate speed 100 r next 200 b rect x y 308 200 override render graphics2 d g height render gfx loader rotate image degree destroy tile id rotation destroy tile center id x destroy tile center id y destroy tile top offset g draw image render location x location y override update delta time rotation rotate speed delta time location location plus move vector multiply delta time x location x b y location y point bind start location plus destroy tile center id minus point 50 50 b rect bind start x 104 bind start y 100 100 0 g layer g focus asteroid add tile explosionspartikel image particle image look subimage 0 50 look width look height 100 point b center b location plus b size multiply 0 5f g focus 1 b center plus point 50 0 system err println b b particle emitter explosion emitter particle emitter image particle b center x b center y 0 0001 g particle manager add emitter explosion emitter thread run thread sleep 200 exception ex g particle manager remove emitter explosion emitter g create game overcreen start
+player player game g x 100 y 200 b rect x y 308 200 health 100 look buffer image 308 200 buffer image argb emitter1 particle emitter smoke 500 500 0 001 emitter2 particle emitter smoke 200 100 0 001 emitter3 particle emitter smoke 200 100 0 001 g particle manager add emitter emitter1 g particle manager add emitter emitter2 g particle manager add emitter emitter3 laser array list
+main serial version uid 1 l
+main array list view view list array list
+main object view list lock object
+main main main
+main menu m
+main main main
+main override init sound manager main m menu add view top m
+main override update focus owner m update time since last frame m state 1 cursor java awt toolkit toolkit create custom cursor buffer image 1 1 buffer image 4 abgr java awt point 0 0 nocursor cursor java awt cursor cursor key board release mouse release focus owner thread sleep 10 interrupt exception e e print stack trace last frame system nano time
+main render stuff graphics2 d g view list lock 0 view list size view list can remove view list remove view v view list v draw g
+main add view top view v view list lock view list add v
+main clear view list view list lock view list clear
+main key press key event e view list lock view v view list v key press e
+main key release key event e view list lock view v view list v key release e
+main menu state m state
+main main
+option game
+option animate background
+option play music
+option play sound
+option score 0
+option username system property user name replace replace replace replace
+option welcome box press space n press ctrl skip n n okay commander can n houston speak just re check mission goal may say last hope mankind rise temperature force u leave lovely home call earth search shelter n scientist agree sector omega 13 qd will arrive moment habitable planet exist s mission find n tiny problem n monitor say will giant asteroid field autopilot system stop respond 2 hour ago seem like navigate manually n n just forget n press hold space rise spaceship n press ctrl fly around obstacle n maybe can even find useful thing n n good luck commander re count n housten
+project serial version uid 1 l
+project j frame f j frame
+project frame
+project last frame
+project time since last frame
+project thread t
+project offset x offset y
+project offset x offset y
+project scale
+project init
+project pre init width height dimension d dimension width height minimum size dimension 160 90 maximum size dimension 16000 9000 prefer size d f j frame f undecorated f add f pack f minimum size dimension 160 90 f close operation j frame exit close f layout border layout f visible add key listener key board add mouse listener mouse add mouse motion listener mouse add mouse listener mouse add mouse wheel listener mouse f size toolkit toolkit screen size f size dimension 1000 300 f location relative re size request focus
+project re size width f width height f height width 16d height 9d scale height 900d offset y 0 offset x width scale 1600 2 scale width 1600d offset x 0 offset y height scale 900 2 mouse scale scale
+project loop last frame system nano time key board key key event vk escape main menu state 0 frame system nano time time since last frame frame last frame 1000000000f last frame frame update render thread sleep 10 interrupt exception e e print stack trace system exit 0
+project update
+project render buffer strategy b buffer strategy b create buffer strategy 2 graphics2 d g graphics2 d b draw graphic g render hint render hint key antialiasing render hint value antialias g render hint render hint key text antialiasing render hint value text antialias g translate offset x offset y g scale scale scale g color color 20 20 30 g fill rect 0 0 1600 900 render stuff g g color color black offset x 0 offset y 0 g fill rect 0 offset y scale 1600 offset y scale g fill rect 0 900 1600 offset y scale 20 g fill rect offset x scale 0 offset x scale 900 g fill rect 1600 0 offset x scale 20 900 g color color orange g font font arial 0 40 g draw value 1 time since last frame 10 40 g dispose b show
+project start t start
+project suppress warn deprecation stop t stop
+project override run init loop
+project render stuff graphics2 d g
+project project t thread t name repaint thread pre init 3200 1800 start
+asteroid part color color
+asteroid part override particle clone asteroid part x y
+asteroid part render graphics2 d g g color c g fill oval x y size size
+asteroid part asteroid part x y x 50 run next 101 y 50 run next 101 color run next 40 run next 20 10 run next 0 2f 0 1f particle mover dir run next 360f point move vector point 50 run next 70f 0 rotate dir override point move x y delta time point p point x y point v move vector trim delta time 100f p p plus v p
+dust color color
+dust override particle clone dust x y
+dust dust x y x y color run next 40 run next 3 2 run next 0 2f 0 1f particle mover dir run next 360 point move vector point 10 run next 20f 0 rotate dir override point move x y delta time point p point x y point v move vector trim delta time 100 p p plus v p
+image particle buffer image img
+image particle array list color color
+image particle image buffer image img image particle img img color array list x 0 x img width x y 0 y img height y color c color img rgb x y c alpha 64 color add c darker
+image particle particle clone image particle x y
+image particle image particle x y x img width 2 run next img width y img height 2 run next img height color run next color size run next 3 2 run next 3f 0 5f particle mover dir run next 360f point move vector point 100f run next 100f 0 rotate dir override point move x y delta time point p point x y point v move vector trim delta time move vector hypot p p plus v p
+particle random run
+particle x y
+particle x y
+particle size
+particle color c
+particle dead
+particle time live
+particle particle mover mover
+particle override particle clone particle x y c size time live mover
+particle update time since last frame time live time since last frame time live 0 dead point move mover move x y time since last frame x move x y move y
+particle render graphics2 d g g color c g fill rect x y size size
+particle dead dead
+particle particle x y color c size time live particle mover mover x x y y c c size size dead time live time live mover mover
+particle emitter time since last spawn
+particle emitter particle origin
+particle emitter spawn delay
+particle emitter enable
+particle emitter array list particle output delta time array list particle array list time since last spawn delta time time since last spawn spawn delay time since last spawn spawn delay enable add origin clone
+particle emitter translate t x t y origin x t x origin y t y
+particle emitter position x y origin x x origin y y
+particle emitter enable enable enable enable
+particle emitter particle emitter particle p spawn delay origin p spawn delay spawn delay
+particle manager array list particle particle
+particle manager array list particle emitter emitter
+particle manager object emitter lock object
+particle manager update time since last frame emitter lock particle emitter e emitter particle add e output time since last frame particle p particle p update time since last frame 0 particle size particle dead particle remove
+particle manager render graphics2 d g particle p particle p render g
+particle manager add emitter particle emitter e emitter lock emitter add e
+particle manager remove emitter particle emitter e emitter lock emitter remove e
+particle manager particle manager particle array list emitter array list
+particle mover point move x y delta time
+smoke color color
+smoke particle clone particle x y color run next 40 run next 2 1 run next 2 2 mover smoke x y
+smoke smoke x y x 5 run next 11 y 5 run next 11 color run next 40 run next 5 5 run next 0 5f 0 7f particle mover override point move x y time since last frame dx run next 4f 2f x run next 400f time since last frame y dx run next 100f time since last frame point x y
+key board key 512
+key board key key code key code 0 key code key length key key code
+key board release 0 key length key
+key board release key
+key board override key press key event e key code e key code key code 0 key code key length key key code main key press e
+key board override key release key event e key code e key code key code 0 key code key length key key code main key release e
+key board unnoetig override key key event arg0
+mouse key 16
+mouse point p point 0 0
+mouse scale 1
+mouse wheel rotation 0
+mouse release 0 key length key
+mouse scale s scale s
+mouse key key code key code 0 key code key length key key code
+mouse x p x
+mouse y p y
+mouse point po p
+mouse override mouse click mouse event e
+mouse override mouse enter mouse event e
+mouse override mouse exit mouse event e
+mouse override mouse press mouse event e button code e button button code 0 button code key length key button code
+mouse override mouse release mouse event e button code e button button code 0 button code key length key button code
+mouse override mouse drag mouse event e p x e x scale p y e y scale
+mouse override mouse move mouse event e p x e x scale p y e y scale
+mouse override mouse wheel move mouse wheel event e wheel rotation e wheel rotation
+bound x y
+bound x y
+bound upper leave corner width height
+bound upper leave corner width height
+bound intersect bound b2
+bound x x
+bound y y
+bound x x
+bound y y
+bound point location point x y
+bound width width
+bound height height
+bound point size point width height
+bound width width width width
+bound height height height height
+bound translate x t x x t
+bound translate y t y y t
+bound translate tx ty translate x tx translate y ty
+circle center x center y radius
+circle center x center y radius
+circle center x center y radius
+circle rsqaure
+circle override intersect bound b2 b2 rect intersect rect b2 b2 circle intersect circle b2 b2 point intersect point b2 system println implement jet circle b2 intesection
+circle override translate x t x center x t
+circle override translate y t y center y t
+circle override x x x x radius center x x
+circle override y y y y radius center y y
+circle circle x y radius x x radius y y radius center x x center y y width radius 2 height radius 2 radius radius rsqaure radius radius
+point override intersect bound b2 b2 point x b2 x y b2 y b2 intersect
+point override x x x x
+point override y y y y
+point x math round x
+point y math round y
+point point plus point p2 point x p2 x y p2 y
+point point minus point p2 point x p2 x y p2 y
+point point multiply factor point x factor y factor
+point point rotate degree r math hypot x y q math atan2 y x 180d math pi q degree q math pi 180d n x r math co q n y r math sin q point n x n y
+point point trim length multiply length hypot
+point hypot math hypot x y
+point override point x y
+point point x y x x y y width 1 height 1
+rect override intersect bound b2 b2 rect intersect rect b2 b2 circle b2 intersect b2 point intersect point b2 system println implement jet circle b2 intesection
+rect override x x x x
+rect override y y y y
+rect bound rect location size size
+rect rect x y width height x x y y width width height height
+gfx loader scale image mode fine affine transform op bicubic
+gfx loader mode medium affine transform op bilinear
+gfx loader mode fast affine transform op nearest neighbor
+gfx loader buffer image load image dateiname buffer image img image io read gfx loader resource stream resource dateiname png compatible image img io exception e e print stack trace
+gfx loader buffer image rotate image degree image img degree affine transform affine transform affine transform rotate instance math radian degree img width 2 img height 2 buffer image rotate image buffer image img width img height buffer image img graphics2 d g graphics2 d rotate image graphic g transform affine transform g draw image img 0 0 rotate image
+gfx loader buffer image rotate image radian image img radian affine transform affine transform affine transform rotate instance radian img width 2 img height 2 buffer image rotate image buffer image img width img height buffer image img graphics2 d g graphics2 d rotate image graphic g transform affine transform g draw image img 0 0 rotate image
+gfx loader buffer image scale image buffer image image width height mode scale image image width height mode image
+gfx loader watermarking buffer image create watermark buffer image original opacity buffer image ret buffer image original width original height buffer image argb x 0 x original width x y 0 y original height y color c color original rgb x y alpha math max 0 math min 255 math round opacity c alpha color color color c red c green c blue alpha ret rgb x y color rgb ret
+gfx loader desaturation buffer image desaturate buffer image original buffer image ret buffer image original width original height original x 0 x original width x y 0 y original height y color c color original rgb x y mix c red c green c blue 3 color color color mix mix mix c alpha ret rgb x y color rgb ret
+gfx loader buffer image extend square buffer image img img height img width delta img height img width 2 buffer image ret buffer image img height img height buffer image argb x 0 x img width x y 0 y img height y ret rgb x delta y img rgb x y ret delta img width img height 2 buffer image ret buffer image img width img width buffer image argb x 0 x img width x y 0 y img height y ret rgb x y delta img rgb x y ret
+gfx loader buffer image compatible image buffer image img graphic environment env graphic environment local graphic environment graphic device device env screen device graphic configuration config device configuration buffer image buffy config create compatible image img width img height transparency translucent graphics2 d g buffy create graphic g draw image img 0 0 buffy
+gfx loader param img1 param img2 param offset x param offset y point relative location img1 collide first point intersect buffer image img1 buffer image img2 offset x offset y sec start x math max 0 offset x sec start y math max 0 offset y sec end x math min img1 width img2 width offset x sec end y math min img1 height img2 height offset y width x sec end x sec start x width y sec end y sec start y width x math ab width x width y math ab width y width x 0 width y 0 sec start x width x img1 width sec start y width y img1 height sec start x width x offset x img2 width sec start y width y offset y img2 height buffer image sec1 img1 subimage sec start x sec start y width x width y buffer image sec2 img2 subimage sec start x offset x sec start y offset y width x width y point ret intersect sec1 sec2 ret ret ret plus point sec start x sec start y ret sec1
+image filter buffer image filter buffer image img
+text box view m per letter 30
+text box view animation m 100
+text box view text
+text box view array list line
+text box view start animation min value
+text box view moment animation start animate last line
+text box view animate
+text box view need skip animation scroll progress 0
+text box view object scroll lock object
+text box view font font
+text box view show face
+text box view buffer image face
+text box view image filter filter
+text box view animate start 1
+text box view face f1 f2 face buffer image 2 face 0 gfx loader load image f1 face 1 gfx loader load image f2
+text box view filter image filter filter filter filter
+text box view override key press key event e scroll lock e key code key event vk enter e key code key event vk space animate check animate moment scroll progress start animation system current time millis animate last line start animation system current time millis 10000 e key code key event vk control can remove
+text box view override paint graphics2 d g scroll lock font old font g font g font font g color color gray g fill rect 0 0 size x size y g color color 30 30 30 g fill rect 5 5 size x 10 size y 10 g color color 200 200 220 g draw text 20 100 line max width size x 20 show face max width view size y line split line text g max width start animation 0 start animation system current time millis visible letter count system current time millis start animation m per letter display letter count 0 animate end line size scroll progress line visible size y 20 g font size end line visible 2 can remove end math min end line visible 0 end line now line scroll progress animate last line line visible 1 line now length visible letter count display letter count len visible letter count display letter count line now line now substring 0 len display letter count len animate sound manager play sound sound manager sound display letter count line now length draw x 10 show face draw x view size y g draw line now draw x g font size g font size show face img 0 animate animate start 1 animate start system current time millis delta system current time millis animate start delta 2 animation m animation m img 0 img 1 img 0 animate start 1 buffer image draw face img filter draw filter filter draw g draw image draw 10 10 view size y 20 view size y 20 g font old font
+text box view array list split line full text graphics2 d g max pixel size array list result array list give line full text split n give line give line word give line split 0 word length word array list line array list counter 0 counter word length line word counter counter word length 1 size g line width size g word counter 1 width max pixel size counter line word counter line add line counter result add line result
+text box view rectangle2 d size graphic g s font metric fm g font metric g font fm bind s g
+text box view printable c character unicode block block character unicode block c character iso control c c key event undefined block block character unicode block special
+text box view text box view text text 20 550 1560 330 font font monospaced font plain 60
+video transmission filter fade m 2000
+video transmission filter noise stay factor 0 3f
+video transmission filter last m 1
+video transmission filter life start 1
+video transmission filter override buffer image filter buffer image img black rgb color 0 0 0 rgb buffer image render buffer image img width img height img x 0 x img width x y 0 y img height y color img rgb x y alpha 50 render rgb x y img rgb x y render rgb x y black rgb update logic last m 1 last m system current time millis life start 1 life start system current time millis delta time m system current time millis last m life time m system current time millis life start draw logic fade factor 1 noise stay factor life time m fade m fade factor life time m fade m fade factor fade factor fade factor fade factor render generate noise render fade factor render
+video transmission filter buffer image generate noise buffer image img factor random r random x 0 x img width x y 0 y img height y color c color img rgb x y noise r next 255 mix r c red factor noise 1f factor mix g c green factor noise 1f factor mix b c blue factor noise 1f factor color mix color mix r mix g mix b img rgb x y mix rgb img
+view point start point
+view point view size
+view can remove
+view draw graphics2 d g g translate start point x start point y shape old clip g clip g clip 0 0 view size x view size y paint g g clip old clip g translate start point x start point y
+view point size view size
+view paint graphics2 d g
+view param e handle event lower view key press key event e
+view key release key event e
+view view point 0 0 point 1600 900
+button buffer image b0 b1
+button buffer image b0 b1
+button title
+button bound b
+button select
+button push
+button update b intersect mouse po select mouse key mouse event button1 push sound manager play sound sound manager sound button press push select push mouse key mouse event button1 push
+button render graphics2 d g
+button button title bound b b b title title select
+credit buffer image look
+credit button back button back circle 100 100 60 override render graphics2 d g g font font helvetica 0 40 g color color black push g draw image b1 b x b y 120 120 g draw title b x 13 b y 73 g draw image b0 b x b y 120 120 g draw title b x 10 b y 70 select g color color 0 0 0 50 g fill oval b x b y b width b height
+credit override update time since last frame key board key key event vk escape back update 0 3
+credit override render graphics2 d g g draw image look 0 0 back render g g color color dark gray g font font helvetica font bold 70 g draw outer space 300 150 g font font helvetica font bold 50 g draw game create ludum dare 34 72h 300 250 g draw tool 300 320 g draw net bean program 300 390 g draw bfxr sound 300 460 g draw jukedeck music 300 530 g font font helvetica font italic 50 g draw erik brendel markus brand 600 800
+main menu buffer image main menu
+main menu button start button start game circle 400 556 150 override render graphics2 d g g font font helvetica 0 40 g color color black titlewidth text box view size g title width titleheight g font size push g draw image b1 b x b y g draw title b x 300 titlewidth 2 7 b y 300 titleheight 2 7 g draw image b0 b x b y g draw title b x 300 titlewidth 2 b y 300 titleheight 2 select g color color 0 0 0 50 g fill oval b x b y b width b height
+main menu button option button option circle 1200 556 150 override render graphics2 d g g font font helvetica 0 40 g color color black titlewidth text box view size g title width titleheight g font size push g draw image b1 b x b y g draw title b x 300 titlewidth 2 7 b y 300 titleheight 2 7 g draw image b0 b x b y g draw title b x 300 titlewidth 2 b y 300 titleheight 2 select g color color 0 0 0 50 g fill oval b x b y b width b height
+main menu button credit button credit circle 800 556 150 override render graphics2 d g g font font helvetica 0 40 g color color black titlewidth text box view size g title width titleheight g font size push g draw image b1 b x b y g draw title b x 300 titlewidth 2 7 b y 300 titleheight 2 7 g draw image b0 b x b y g draw title b x 300 titlewidth 2 b y 300 titleheight 2 select g color color 0 0 0 50 g fill oval b x b y b width b height
+main menu override update time since last frame start update key board key key event vk enter key board release 1 option update 2 credit update 3 0
+main menu override render graphics2 d g g draw image main menu 0 0 start render g option render g credit render g g color color dark gray g font font helvetica font bold 100 oswidth text box view size g outer space width g draw outer space 1600 oswidth 2 280
+menu array list menu state menu state
+menu current state 0
+menu state 0
+menu transition t
+menu transition state 2
+menu update time since last frame t transition state t update time since last frame transition state 2 current state state t option game option game option score 0 menu state 1 game state current state t transition mouse x mouse y 0 5f 0 5f state menu state current state update time since last frame
+menu override paint graphics2 d g transition state 0 menu state current state render g t render g transition state 1 menu state state render g t render g menu state current state render g
+menu key press key event e menu state s menu state current state s s key press e
+menu key release key event e menu state s menu state current state s s key release e
+menu state current state
+menu menu menu state array list menu state add main menu menu state add game menu state add option view menu state add credit
+transition x y
+transition x y
+transition size max size
+transition size max size
+transition time run
+transition circle time
+transition transition time
+transition update time since last frame time run time since last frame time run circle time size time run circle time max size 0 time run circle time transition time 1 2
+transition render graphics2 d g time run circle time alpha time run circle time 55f 200 g color color 0 0 0 alpha g fill oval x size y size size 2 size 2 time run circle time transition time alpha 255 time run circle time transition time 255f g color color 0 0 0 alpha g fill rect 0 0 1600 900
+transition transition x y circle time transition time x x y y x 800 y 450 max size math sqrt math pow 1600 x 2 math pow 900 y 2 max size math sqrt math pow 1600 x 2 math pow y 2 y 450 max size math sqrt math pow x 2 math pow 900 y 2 max size math sqrt math pow x 2 math pow y 2 circle time circle time transition time transition time time run 0
+menu state update time since last frame
+menu state render graphics2 d g
+menu state key press key event e
+menu state key release key event e
+option view buffer image look
+option view button toggle music toggle button toggle music circle 1100 450 150
+option view button toggle sound toggle button toggle sound circle 500 450 150
+option view button back button back circle 100 100 60 override render graphics2 d g g font font helvetica 0 40 g color color black push g draw image b1 b x b y 120 120 g draw title b x 13 b y 73 g draw image b0 b x b y 120 120 g draw title b x 10 b y 70 select g color color 0 0 0 50 g fill oval b x b y b width b height
+option view override update time since last frame sound manager play music toggle music update option play sound toggle sound update key board key key event vk escape back update key board release 0 2
+option view override render graphics2 d g g draw image look 0 0 toggle music render g toggle sound render g back render g
+toggle button toggle
+toggle button override render graphics2 d g g font font helvetica 0 40 g color color black toggle g draw image b1 b x b y g draw title b x 17 b y 147 g draw b x 107 b y 197 g draw image b0 b x b y g draw title b x 10 b y 140 g draw b x 100 b y 190 select g color color 0 0 0 50 g fill oval b x b y b width b height
+toggle button override update b intersect mouse po select mouse key mouse event button1 sound manager play sound sound manager sound button press toggle toggle mouse release select toggle
+toggle button toggle button title bound b title b toggle
+sound manager link list audio clip sound
+sound manager link list audio clip music
+sound manager play sound sound s play sound s id
+sound manager play music music m play music m id
+sound manager stop music music m music m id stop
+sound manager suppress warn unused audio clip load clip name applet audio clip sound manager resource resource name au exception e e print stack trace
+sound manager play music play music play music option play music play music option play music play music play music 0 0 music size stop music option play music play music
+sound manager override run sound link list sound add load clip test music link list music add load clip music sound add load clip pickup laser sound add load clip pickup shield sound add load clip pickup repair sound add load clip hurt sound add load clip laser shoot sound add load clip button press sound add load clip sound add load clip explosion option play music option play sound play music music music
+sound manager sound manager thread start
+music id
+music music id id id
+sound id
+sound sound id id id
+crypt repeat count 10
+crypt encode score score score complete random r random 0 repeat count offset r next 10 complete complete offset j 0 j score length j digit integer value score j digit offset digit digit 10 complete digit complete
+crypt decode msg integer value msg
+highscores host http 87 106 83 248
+highscores param username param score personal highscore upload username score full url host upload stats php name username score crypt encode score mac mac connection web content full url system err println equal better
+highscores method two arraylists one one integer contain player name score size array list stats full url host stats php connection web content full url array list player name array list array list integer player score array list score pair split score pair score pair data score pair split name data 0 score crypt decode data 1 player name add name player score add score thread sleep 1000 interrupt exception ex exception ex error system err println bad server response n ex print stack trace array list pack array list 2 pack 0 player name pack 1 player score pack
+highscores mac network network network inet address inet address local host mac network hardware address builder sb builder 0 mac length sb append format 02 x s mac mac length 1 sb exception ex mac find
+connection web url content web content url web content requester requester identifier timer dl timer dl schedule downloader url requester identifier 0
+connection web content url2 erg url url input stream buffer reader br line url url url2 url open stream deswegen br buffer reader input stream reader line br read line erg line malformed url exception mue mue print stack trace io exception ioe ioe print stack trace close io exception ioe erg
+downloader url
+downloader web content requester requester
+downloader identifier
+downloader override run response web content url system println webhandler request url finish system println webhanlder content response requester recieve web content response identifier
+downloader downloader url web content requester requester identifier url url requester requester identifier identifier
+web content requester recieve web content content identifier
