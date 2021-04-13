@@ -23,17 +23,6 @@ vector<unsigned int> nonzero(const vector<unsigned int> &data) {
     return result;
 }
 
-/**
- * get the list of indices that are not zero in this vector
- */
-unsigned int count_nonzero(const vector<unsigned int> &data) {
-    unsigned int result = 0;
-    for (unsigned int elem : data) {
-        if (elem != 0) result++;
-    }
-    return result;
-}
-
 vector<vector<Biterm>> vec2Biterms(const vector<vector<unsigned int>> &docWord) {
     unsigned int nDocs = docWord.size();
 
@@ -54,12 +43,6 @@ vector<vector<Biterm>> vec2Biterms(const vector<vector<unsigned int>> &docWord) 
 
 
 vector<vector<string>> readInputDocuments() {
-    /*vector<vector<string>> documents = {
-            {"this", "is", "a", "test", "is", "nice"},
-            {"test", "some", "more"},
-            {"doc3", "is", "different"},
-    };*/
-
     vector<vector<string>> documents;
 
     string line, word;

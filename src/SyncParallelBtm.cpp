@@ -45,6 +45,7 @@ SyncParallelBtm::aggregator_thread_fn(const vector<Biterm> &allBiterms, unsigned
 
         threadSync.mainThreadDone();
     }
+    cout << "#progress " << iterations << " of " << iterations << endl;
 }
 
 void

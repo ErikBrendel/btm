@@ -7,8 +7,11 @@ content = None
 with open('data/example_jhotdraw.txt') as f:
     content = "".join(f.readlines())
 
-total_iterations = 200
-process = subprocess.Popen([CLI_PATH, '--iterations', str(total_iterations)], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+total_iterations = 123
+options = [CLI_PATH,
+           '--iterations', str(total_iterations),
+           ]
+process = subprocess.Popen(options, stdin=subprocess.PIPE, stdout=subprocess.PIPE)
 process.stdin.write(content.encode("utf-8"))
 process.stdin.close()
 
