@@ -3,7 +3,6 @@
 #include <sstream>
 #include <thread>
 #include "Btm.h"
-#include "ParallelBtm.h"
 #include "SyncParallelBtm.h"
 #include "CountVectorizer.h"
 #include "SortedLimitedList.h"

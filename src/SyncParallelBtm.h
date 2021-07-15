@@ -4,7 +4,6 @@
 #include "Btm.h"
 
 #include "ThreadsafeQueue.h"
-#include "ThreadsafeCounter.h"
 #include "ThreadSync1toN.h"
 
 using namespace std;
