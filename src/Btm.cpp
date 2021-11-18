@@ -124,8 +124,8 @@ void Btm::doGibbsIterations(const vector<Biterm> &allBiterms, unsigned int vocab
 #endif
         rep(i, allBiterms.size()) {
             const auto &biterm = allBiterms[i];
-            // remove this biterm from its old topic
 #if !DELAY_UPDATES
+            // remove this biterm from its old topic
             wordAndTopicToCount[biterm.first * topicCount + bitermToTopic[i]]--;
             wordAndTopicToCount[biterm.second * topicCount + bitermToTopic[i]]--;
             topicToCount[bitermToTopic[i]]--;
