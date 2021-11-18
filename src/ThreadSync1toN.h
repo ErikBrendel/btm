@@ -11,7 +11,6 @@ enum ThreadSyncState {
     WorkersEnding = 2,
 };
 
-//template <typename T1, typename T2>
 class ThreadSync1toN {
 private:
     unsigned int workerCount;
@@ -19,14 +18,17 @@ private:
     unsigned int runningThreads;
 
     std::mutex context_switch_mutex;
-    std::condition_variable switch_to_main_cv;
-    std::condition_variable switch_to_workers_cv;
-    std::condition_variable switch_to_closing_cv;
+    std::condition_variable switch_to_state_cv[3];
+
 public:
     explicit ThreadSync1toN(unsigned int workerCount);
 
-    void mainThreadDone();
     void mainThreadWait();
-    void workerThreadDone();
+    void mainThreadDone();
     void workerThreadWait();
+    void workerThreadDone();
+
+private:
+    void waitForState(ThreadSyncState expectedState, std::unique_lock<std::mutex>& lock);
+    void switchToState(ThreadSyncState newState);
 };

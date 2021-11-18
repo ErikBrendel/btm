@@ -1,8 +1,5 @@
-
-
 #include "ThreadSync1toN.h"
 
-#include <iostream>
 #include <cassert>
 
 ThreadSync1toN::ThreadSync1toN(unsigned int workerCount) :
@@ -10,34 +7,43 @@ ThreadSync1toN::ThreadSync1toN(unsigned int workerCount) :
     state{ThreadSyncState::WorkersStarting},
     runningThreads{0} {}
 
+void ThreadSync1toN::mainThreadWait() {
+    std::unique_lock<std::mutex> lock(context_switch_mutex);
+    waitForState(ThreadSyncState::Main, lock);
+    assert(runningThreads == 0);
+}
+
 void ThreadSync1toN::mainThreadDone() {
     assert(runningThreads == 0);
     std::scoped_lock<std::mutex> lock(context_switch_mutex);
-    state = ThreadSyncState::WorkersStarting;
-    switch_to_workers_cv.notify_all();
-}
-
-void ThreadSync1toN::mainThreadWait() {
-    std::unique_lock<std::mutex> lock(context_switch_mutex);
-    while (state != ThreadSyncState::Main) switch_to_main_cv.wait(lock);
-}
-
-void ThreadSync1toN::workerThreadDone() {
-    std::unique_lock<std::mutex> lock(context_switch_mutex);
-    while (state != ThreadSyncState::WorkersEnding) switch_to_closing_cv.wait(lock); // wait til all other threads have started
-    runningThreads--;
-    if (runningThreads == 0) {
-        state = ThreadSyncState::Main; // If I am the last thread to finish working, hand it over to the main thread
-        switch_to_main_cv.notify_one();
-    }
+    switchToState(ThreadSyncState::WorkersStarting);
 }
 
 void ThreadSync1toN::workerThreadWait() {
     std::unique_lock<std::mutex> lock(context_switch_mutex);
-    while (state != ThreadSyncState::WorkersStarting) switch_to_workers_cv.wait(lock); // wait until all other threads are done
+    waitForState(ThreadSyncState::WorkersStarting, lock);
     runningThreads++;
-    if (runningThreads == workerCount) {
-        state = ThreadSyncState::WorkersEnding; // if I am the last thread to pick up work again, let's start the ending phase
-        switch_to_closing_cv.notify_all();
+    if (runningThreads == workerCount) { // if I am the last thread to pick up work again, let's start the ending phase
+        switchToState(ThreadSyncState::WorkersEnding);
     }
+}
+
+void ThreadSync1toN::workerThreadDone() {
+    std::unique_lock<std::mutex> lock(context_switch_mutex);
+    waitForState(ThreadSyncState::WorkersEnding, lock);
+    runningThreads--;
+    if (runningThreads == 0) { // If I am the last thread to finish working, hand it over to the main thread
+        switchToState(ThreadSyncState::Main);
+    }
+}
+
+void ThreadSync1toN::waitForState(ThreadSyncState expectedState, std::unique_lock<std::mutex>& lock) {
+    while (state != expectedState) {
+        switch_to_state_cv[expectedState].wait(lock);
+    }
+}
+
+void ThreadSync1toN::switchToState(ThreadSyncState newState) {
+    state = newState;
+    switch_to_state_cv[newState].notify_all();
 }
