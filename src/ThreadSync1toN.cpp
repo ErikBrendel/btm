@@ -24,7 +24,7 @@ void ThreadSync1toN::mainThreadWait() {
 
 void ThreadSync1toN::workerThreadDone() {
     std::unique_lock<std::mutex> lock(context_switch_mutex);
-    while (state == ThreadSyncState::WorkersStarting) switch_to_closing_cv.wait(lock); // wait til all other threads have started
+    while (state != ThreadSyncState::WorkersEnding) switch_to_closing_cv.wait(lock); // wait til all other threads have started
     runningThreads--;
     if (runningThreads == 0) {
         state = ThreadSyncState::Main; // If I am the last thread to finish working, hand it over to the main thread
