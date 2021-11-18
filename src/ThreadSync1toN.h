@@ -16,7 +16,7 @@ class ThreadSync1toN {
 private:
     unsigned int workerCount;
     ThreadSyncState state;
-    unsigned int doneThreads;
+    unsigned int runningThreads;
 
     std::mutex context_switch_mutex;
     std::condition_variable switch_to_main_cv;
