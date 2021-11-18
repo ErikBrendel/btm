@@ -6,13 +6,13 @@
 
 template<typename T>
 class ThreadsafeQueue {
-public:
+private:
     std::queue<T> container;
     std::mutex queue_access_mutex;
-    std::condition_variable queue_access_wake_up;
 public:
     void add(const T& element);
     void add(T&& element);
+    void addAll(const vector<T>& elements);
 
     template<typename... _Args>
     decltype(auto)

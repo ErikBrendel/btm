@@ -15,6 +15,14 @@ void ThreadsafeQueue<T>::add(T &&element) {
 }
 
 template<typename T>
+void ThreadsafeQueue<T>::addAll(const vector<T>& elements) {
+    std::scoped_lock<std::mutex> lock(queue_access_mutex);
+    for (const T& element: elements) {
+        container.push(element);
+    }
+}
+
+template<typename T>
 template<typename... Args>
 decltype(auto) ThreadsafeQueue<T>::emplace(Args &&... args) {
     std::scoped_lock<std::mutex> lock(queue_access_mutex);

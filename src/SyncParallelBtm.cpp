@@ -79,12 +79,7 @@ SyncParallelBtm::worker_thread_fn(const vector<Biterm> &allMyBiterms, unsigned i
                 myBitermToTopic[i] = newTopic;
             }
         }
-        {
-            std::scoped_lock<std::mutex> lock(bitermTopicUpdates.queue_access_mutex);
-            for (const auto& t: localTaskCache) {
-                bitermTopicUpdates.container.push(t);
-            }
-        }
+        bitermTopicUpdates.addAll(localTaskCache);
         threadSync.workerThreadDone();
     }
 }
