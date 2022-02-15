@@ -30,9 +30,9 @@ void ThreadSync1toN::workerThreadWait() {
 
 void ThreadSync1toN::workerThreadDone() {
     std::unique_lock<std::mutex> lock(context_switch_mutex);
-    waitForState(ThreadSyncState::WorkersEnding, lock);
+    waitForState(ThreadSyncState::WorkersEnding, lock); // wait til all other threads have started
     runningThreads--;
-    if (runningThreads == 0) { // If I am the last thread to finish working, hand it over to the main thread
+    if (runningThreads == 0) { // If I am the last thread to finish working, hand control over to the main thread again
         switchToState(ThreadSyncState::Main);
     }
 }

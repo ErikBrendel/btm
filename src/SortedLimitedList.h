@@ -12,7 +12,7 @@ private:
     vector<pair<T, V>> container;
     unsigned int maxCapacity;
 
-    V cutoff_value = ascending ? numeric_limits<V>::max() : numeric_limits<V>::min();
+    // V cutoff_value = ascending ? numeric_limits<V>::max() : numeric_limits<V>::min();
 
 public:
     explicit SortedLimitedList(unsigned int maxCapacity);

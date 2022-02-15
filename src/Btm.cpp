@@ -6,7 +6,10 @@
 
 #include "util.h"
 
-// https://github.com/markoarnauto/biterm/blob/master/biterm/btm.py
+
+// inspired by https://github.com/markoarnauto/biterm/blob/master/biterm/btm.py
+// and https://github.com/jcapde/Biterm/blob/master/Biterm_sampler.py
+
 
 #define RANDOM_SEED 42
 std::mt19937 my_btm_randomEngine(RANDOM_SEED);
